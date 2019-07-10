@@ -37,6 +37,7 @@ namespace Capstone.Web
 
             string connectionString = Configuration.GetConnectionString("Default");
 
+<<<<<<< HEAD
             //services.AddTransient<NationalParkSqlDAO>();
             //services.AddTransient<WeatherSqlDAO>();
             //services.AddTransient<SurveySqlDAO>();
@@ -45,6 +46,10 @@ namespace Capstone.Web
             services.AddScoped<ISurveyDAO, SurveySqlDAO>(j => new SurveySqlDAO(connectionString));
             services.AddScoped<IWeatherDAO, WeatherSqlDAO>(j => new WeatherSqlDAO(connectionString));
 
+=======
+            services.AddTransient<INationalParkDAO>(d => new NationalParkSqlDAO(connectionString));
+            
+>>>>>>> 26d4e6a8aecccbcb2e282fb2bde2dc7dfcbdc28c
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }

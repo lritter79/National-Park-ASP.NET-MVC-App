@@ -7,7 +7,7 @@ using Capstone.Web.Models;
 
 namespace Capstone.Web.DAL
 {
-    public class NationalParkSqlDAO
+    public class NationalParkSqlDAO:INationalParkDAO
     {
         private string connectionString;
 
