@@ -31,9 +31,12 @@ namespace Capstone.Web.Controllers
         }
 
       [HttpGet]
-      public IActionResult ParkDetail(string parkCode, NationalPark parkdetail)
+      public IActionResult ParkDetail(string parkCode)
         {
-            return View(parkdetail);
+            ViewData["ParkCode"] = parkCode;
+            NationalPark park = nationalParkDAO.GetParkByCode(parkCode);
+            park.Forecast = weatherDAO.GetFiveDayForecast(parkCode);
+            return View(park);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
