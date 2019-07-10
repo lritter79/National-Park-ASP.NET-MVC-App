@@ -1,4 +1,4 @@
-﻿@model NationalPark
+﻿@model IList<NationalPark>
 
 @{
     ViewData["Title"] = "Home Page";
@@ -7,15 +7,15 @@
 <section class="centeredPanel">
     <h2>National Park Geek</h2>
 
-    @foreach (NationalPark nationalPark in Model.AllParks)
+    @foreach (NationalPark park in Model)
     {
         <div style=" display:grid; grid-template-columns: 1fr 5fr; grid-template-areas: 'photo info';  padding: 20px; ">
-            <a asp-controller="home" asp-action="park" asp-route-id="@nationalPark">
-                <img src="~/images/(@nationalPark.ParkCode).jpg" style="width:300px; padding: 20px; grid-area:photo;" />
+            <a asp-controller="home" asp-action="park" asp-route-id="@park">
+                <img src="~/images/(@park.ParkCode).jpg" style="width:300px; padding: 20px; grid-area:photo;" />
             </a>
             <div grid-area:info>
-                <p style=" margin-top: 20px; font-weight:bold; font-size:24px;">@nationalPark.ParkName</p>
-                <p style=" margin-top: 20px; font-size:18px; ">@nationalPark.ParkDescription</p>
+                <p style=" margin-top: 20px; font-weight:bold; font-size:24px;">@park.ParkName</p>
+                <p style=" margin-top: 20px; font-size:18px; ">@park.ParkDescription</p>
 
             </div>
         </div>
