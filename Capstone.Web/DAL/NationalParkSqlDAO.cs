@@ -38,9 +38,9 @@ namespace Capstone.Web.DAL
             };
         }
 
-        public NationalPark GetParkByID(int parkId)
+        public NationalPark GetParkByID(string parkId)
         {
-            return GetAllParks().FirstOrDefault(p => p.ParkCode == code);
+            return GetAllParks().FirstOrDefault(p => p.ParkCode == parkId);
         }
 
         public NationalPark GetParkByCode(string code)

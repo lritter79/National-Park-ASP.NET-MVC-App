@@ -40,6 +40,7 @@ namespace Capstone.Web
 
             services.AddTransient<INationalParkDAO>(d => new NationalParkSqlDAO(connectionString));
             services.AddTransient<ISurveyDAO>(d => new SurveySqlDAO(connectionString));
+            services.AddTransient<IWeatherDAO>(d => new WeatherSqlDAO(connectionString));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
