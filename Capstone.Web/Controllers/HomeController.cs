@@ -14,9 +14,10 @@ namespace Capstone.Web.Controllers
         private INationalParkDAO nationalParkDAO { get; }
         private IWeatherDAO weatherDAO { get; }
 
-        public HomeController(INationalParkDAO nationalParkDAO)
+        public HomeController(INationalParkDAO nationalParkDAO, IWeatherDAO weatherDAO)
         {
             this.nationalParkDAO = nationalParkDAO;
+            this.weatherDAO = weatherDAO;
         }
 
 

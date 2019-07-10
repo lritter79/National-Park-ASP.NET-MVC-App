@@ -26,12 +26,8 @@ namespace Capstone.Web.Models
         public int EntryFee { get; set; }
         public int NumberOfAnimalSpecies { get; set; }
         public IList<NationalPark> AllParks { get; set; }
-        //public IList<Weather> Forecast {get 
-        //    {
-        //        WeatherSqlDAO dao = new WeatherSqlDAO();
-        //        return dao.FiveDayForecast(this.ParkCode)
-        //    };
-        // }
+        public IList<Weather> Forecast { get; set; }
+            
 
 
         public Dictionary<string, string> ForecastAdvisoryMessagePairs = new Dictionary<string, string>()

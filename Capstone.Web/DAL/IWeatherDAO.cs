@@ -14,6 +14,6 @@ namespace Capstone.Web.DAL
         /// </summary>
         /// <param name="park"></param>
         /// <returns></returns>
-        IList<Weather> GetFiveDayForecast(NationalPark park);
+        IList<Weather> GetFiveDayForecast(string Id);
     }
 }
