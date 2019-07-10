@@ -9,7 +9,7 @@
     @foreach (NationalPark park in Model)
     {
         <div style=" display:grid; grid-template-columns: 1fr 5fr; grid-template-areas: 'photo info';  padding: 20px; ">
-            <a asp-controller="home" asp-action="getparkbycode" asp-route-id="@park.ParkCode">
+            <a asp-controller="home" asp-action="parkdetail" asp-route-id="@park.ParkCode">
                 <img src="~/images/@(park.ParkCode).jpg" style="width:300px; padding: 20px; grid-area:photo;" />
             </a>
             <div grid-area:info>

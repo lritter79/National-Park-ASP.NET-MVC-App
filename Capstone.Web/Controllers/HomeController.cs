@@ -30,9 +30,9 @@ namespace Capstone.Web.Controllers
         }
 
       [HttpGet]
-      public IActionResult GetParkByCode(string parkCode, NationalPark nationalPark)
+      public IActionResult ParkDetail(string parkCode, NationalPark parkdetail)
         {
-            return View(nationalPark);
+            return View(parkdetail);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
