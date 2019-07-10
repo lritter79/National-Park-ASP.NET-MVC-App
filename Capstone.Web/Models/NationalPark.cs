@@ -23,6 +23,8 @@ namespace Capstone.Web.Models
         public int EntryFee { get; set; }
         public int NumberOfAnimalSpecies { get; set; }
 
+        public IList<NationalPark> AllParks { get; set; }
+
         public Dictionary<string, string> ForecastAdvisoryMessagePairs = new Dictionary<string, string>()
         {
             {"snow","pack snowshoes"},
