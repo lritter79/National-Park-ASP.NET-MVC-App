@@ -7,7 +7,7 @@ using Capstone.Web.Models;
 
 namespace Capstone.Web.DAL
 {
-    public class NationalParkSqlDAO
+    public class NationalParkSqlDAO:INationalParkDAO
     {
         private string connectionString;
 
@@ -24,7 +24,7 @@ namespace Capstone.Web.DAL
                 ParkName = Convert.ToString(reader["parkName"]),
                 State = Convert.ToString(reader["state"]),
                 Acreage = Convert.ToInt32(reader["acreage"]),
-                ElevationInFeet = Convert.ToInt32(reader["elevtionInFeet"]),
+                ElevationInFeet = Convert.ToInt32(reader["elevationInFeet"]),
                 MilesOfTrail = Convert.ToInt32(reader["milesOfTrail"]),
                 NumberOfCampsites = Convert.ToInt32(reader["numberOfCampsites"]),
                 Climate = Convert.ToString(reader["climate"]),
