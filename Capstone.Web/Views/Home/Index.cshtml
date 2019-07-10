@@ -11,7 +11,7 @@
     {
         <div style=" display:grid; grid-template-columns: 1fr 5fr; grid-template-areas: 'photo info';  padding: 20px; ">
             <a asp-controller="home" asp-action="park" asp-route-id="@park">
-                <img src="~/images/(@park.ParkCode).jpg" style="width:300px; padding: 20px; grid-area:photo;" />
+                <img src="~/images/@(park.ParkCode).jpg" style="width:300px; padding: 20px; grid-area:photo;" />
             </a>
             <div grid-area:info>
                 <p style=" margin-top: 20px; font-weight:bold; font-size:24px;">@park.ParkName</p>
