@@ -38,6 +38,11 @@ namespace Capstone.Web.DAL
             };
         }
 
+        public NationalPark GetParkByCode(string code)
+        {
+            return GetAllParks().FirstOrDefault(p => p.ParkCode == code);
+        }
+
         public IList<NationalPark> GetAllParks()
         {
             IList<NationalPark> nationalParks = new List<NationalPark>();

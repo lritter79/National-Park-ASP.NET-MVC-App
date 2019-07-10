@@ -8,6 +8,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Capstone.Web.Models;
+using Capstone.Web.DAL;
+
 
 namespace Capstone.Web
 {
@@ -31,12 +34,15 @@ namespace Capstone.Web
             });
 
 
+
+            string connectionString = Configuration.GetConnectionString("Default");
+
+            services.AddTransient<NationalParkSqlDAO>();
+            services.AddTransient<SurveySqlDAO>();
+            services.AddTransient<WeatherSqlDAO>();
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
-
-        //string connectionString = Configuration.GetConnectionString("Default");
-
-        //    services.AddScoped<INationalParkDAO, NationalParkListSqlDAO>(j => new NationalParkListSqlDAO(connectionString));
 
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
