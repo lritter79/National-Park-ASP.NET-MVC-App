@@ -34,6 +34,11 @@ namespace Capstone.Web
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
+        //string connectionString = Configuration.GetConnectionString("Default");
+
+        //    services.AddScoped<INationalParkDAO, NationalParkListSqlDAO>(j => new NationalParkListSqlDAO(connectionString));
+
+
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
