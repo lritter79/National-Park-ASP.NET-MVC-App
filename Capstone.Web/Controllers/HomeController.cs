@@ -31,11 +31,11 @@ namespace Capstone.Web.Controllers
         }
 
       [HttpGet]
-      public IActionResult ParkDetail(string parkCode)
+      public IActionResult ParkDetail(string id)
         {
-            ViewData["ParkCode"] = parkCode;
-            NationalPark park = nationalParkDAO.GetParkByCode(parkCode);
-            park.Forecast = weatherDAO.GetFiveDayForecast(parkCode);
+            
+            NationalPark park = nationalParkDAO.GetParkByCode(id);
+            park.Forecast = weatherDAO.GetFiveDayForecast(id);
             return View(park);
         }
 

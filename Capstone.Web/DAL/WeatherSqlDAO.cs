@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 
 namespace Capstone.Web.DAL
 {
-    public class WeatherSqlDAO
+    public class WeatherSqlDAO : IWeatherDAO
     {
         private string connectionString;
 

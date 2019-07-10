@@ -43,9 +43,9 @@ namespace Capstone.Web.DAL
             return GetAllParks().FirstOrDefault(p => p.ParkCode == parkId);
         }
 
-        public NationalPark GetParkByCode(string code)
+        public NationalPark GetParkByCode(string parkCode)
         {
-            return GetAllParks().FirstOrDefault(p => p.ParkCode == code);
+            return GetAllParks().FirstOrDefault(p => p.ParkCode == parkCode);
         }
 
         public IList<NationalPark> GetAllParks()
