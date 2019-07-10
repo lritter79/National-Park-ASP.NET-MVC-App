@@ -49,4 +49,5 @@ namespace Capstone.Web.Models
 //h.If the difference between the high and low temperature exceeds 20 degrees, tell the user to
 //wear breathable layers.
 //i.If the temperature is going to be below 20 degrees, make sure to warn the user of the dangers
-//of exposure to frigid temperatures.
+//of exposure to frigid temperatures.
+

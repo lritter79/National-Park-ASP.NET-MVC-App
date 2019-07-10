@@ -38,7 +38,7 @@ namespace Capstone.Web
             string connectionString = Configuration.GetConnectionString("Default");
 
             services.AddTransient<INationalParkDAO>(d => new NationalParkSqlDAO(connectionString));
-            
+            services.AddTransient<ISurveyDAO>(d => new SurveySqlDAO(connectionString));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }

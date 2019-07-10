@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 
 namespace Capstone.Web.DAL
 {
-    public class SurveySqlDAO
+    public class SurveySqlDAO: ISurveyDAO
     {
         private string connectionString;
 
