@@ -16,7 +16,7 @@ namespace Capstone.Web.DAL
             this.connectionString = connectionString;
         }
 
-        private SurveyResult MapRowToSurvey(SqlDataReader reader)
+        private SurveyResult MapRowToSurveyResult(SqlDataReader reader)
         {
             return new SurveyResult()
             {

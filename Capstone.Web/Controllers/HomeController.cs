@@ -5,19 +5,28 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Capstone.Web.Models;
+using Capstone.Web.DAL;
 
 namespace Capstone.Web.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        private INationalParkDAO nationalParkDAO { get; }
+        private IWeatherDAO weatherDAO { get; }
+
+        public HomeController(INationalParkDAO nationalParkDAO)
         {
-            return View();
+            this.nationalParkDAO = nationalParkDAO;
         }
 
-        public IActionResult Home()
+
+
+
+        public IActionResult Index()
         {
-            return View();
+            IList<NationalPark> parks = nationalParkDAO.GetAllParks();
+
+            return View(parks);
         }
 
       
