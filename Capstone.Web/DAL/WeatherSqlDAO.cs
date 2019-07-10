@@ -27,7 +27,7 @@ namespace Capstone.Web.DAL
                 Forecast = Convert.ToString(reader["forecast"])
             };
         }
-        public IList<Weather> GetFiveDayForecast(NationalPark park)
+        public IList<Weather> GetFiveDayForecast(string Id)
         {
             IList<Weather> FiveDayForecast = new List<Weather>();
             try
@@ -36,7 +36,7 @@ namespace Capstone.Web.DAL
                 {
                     conn.Open();
                     SqlCommand cmd = new SqlCommand("SELECT * from weather where parkCode = @parkcode ORDER BY fiveDayForecastValue asc;", conn);
-                    cmd.Parameters.AddWithValue("@parkcode", park.ParkCode);
+                    cmd.Parameters.AddWithValue("@parkcode", Id);
 
                     SqlDataReader reader = cmd.ExecuteReader();
                     while (reader.Read())

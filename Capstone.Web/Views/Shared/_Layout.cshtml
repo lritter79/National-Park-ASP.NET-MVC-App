@@ -16,7 +16,10 @@
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
 </head>
+
 <body>
+    <img src="~/images/logo.png" style="width:400px; margin-top: 20px; margin-left: 100px;" />
+
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -31,17 +34,16 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-<<<<<<< HEAD
-                    <li><a asp-area="" asp-controller="Home" asp-action="Survey">Survey</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-=======
                     <li><a asp-area="" asp-controller="Survey" asp-action="TakeSurvey">What's your favorite park?</a></li>
->>>>>>> 52b8b261819e9ac810d4ce0b251114a820f3a959
                 </ul>
             </div>
         </div>
     </nav>
+    <div>
+
+    </div>
 
     <partial name="_CookieConsentPartial" />
 

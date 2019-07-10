@@ -1,0 +1,20 @@
+﻿@model NationalPark
+@{
+    ViewData["Title"] = "ParkDetail";
+}
+
+<section class="centeredPanel">
+    <h2>Park Information</h2>
+
+    <div>
+
+        <img src="~/images/@(Model.ParkCode).jpg" style="width:300px; padding: 20px; " />
+
+        <div>
+            <p style=" margin-top: 20px; font-weight:bold; font-size:20px;">@Model.ParkName</p>
+            <p style=" margin-top: 20px; font-size:14px; ">$@Model.ParkDescription</p>
+            <p style=" margin-top: 20px; font-size:14px; ">$@Model.InspirationalQuote</p>
+            <p style=" margin-top: 20px; font-size:14px; ">$@Model.InspirationalQuoteSource</p>
+        </div>
+    </div>
+</section>

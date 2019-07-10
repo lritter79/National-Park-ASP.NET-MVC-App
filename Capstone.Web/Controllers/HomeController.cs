@@ -29,7 +29,11 @@ namespace Capstone.Web.Controllers
             return View(parks);
         }
 
-      
+      [HttpGet]
+      public IActionResult GetParkByCode(string parkCode, NationalPark nationalPark)
+        {
+            return View(nationalPark);
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

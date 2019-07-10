@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Capstone.Web.DAL;
+using Capstone.Web.Models;
 
 namespace Capstone.Web.Models
 {
     public class NationalPark
     {
+        
         public string ParkCode { get; set; }
         public string ParkName { get; set; }
         public string State { get; set; }
@@ -23,7 +26,12 @@ namespace Capstone.Web.Models
         public int EntryFee { get; set; }
         public int NumberOfAnimalSpecies { get; set; }
         public IList<NationalPark> AllParks { get; set; }
-
+        public IList<Weather> Forecast {get 
+            {
+                WeatherSqlDAO dao = new WeatherSqlDAO();
+                return dao.FiveDayForecast(this.ParkCode)
+            };
+         }
 
 
         public Dictionary<string, string> ForecastAdvisoryMessagePairs = new Dictionary<string, string>()
