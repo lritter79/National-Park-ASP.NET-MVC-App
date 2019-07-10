@@ -25,14 +25,14 @@ namespace Capstone.Web.Models
 
         public IList<NationalPark> AllParks { get; set; }
 
-        public Dictionary<string, string> ForecastAdvisoryMessagePairs = new Dictionary<string, string>()
-        {
-            {"snow","pack snowshoes"},
-            {"rain","rain gear and wear waterproof shoes"},
-            {"thunderstorms","seek shelter and avoid hiking on exposed ridges"},
-            {"sunny","pack sunblock"},
-            {"partly cloudy",""}
-        };
+        //public Dictionary<string, string> ForecastAdvisoryMessagePairs = new Dictionary<string, string>()
+        //{
+        //    {"snow","pack snowshoes"},
+        //    {"rain","rain gear and wear waterproof shoes"},
+        //    {"thunderstorms","seek shelter and avoid hiking on exposed ridges"},
+        //    {"sunny","pack sunblock"},
+        //    {"partly cloudy",""}
+        //};
 
         
     }
