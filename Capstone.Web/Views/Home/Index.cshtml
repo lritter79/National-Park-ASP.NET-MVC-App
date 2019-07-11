@@ -10,12 +10,12 @@
     {
         <div style=" display:grid; grid-template-columns: 1fr 5fr; grid-template-areas: 'photo info';  padding: 20px; ">
             <a asp-controller="home" asp-action="parkdetail" asp-route-id="@(park.ParkCode)">
-                <img src="~/images/@(park.ParkCode).jpg" style="width:300px; padding: 20px; grid-area:photo;" />
+                <img src="~/images/@(park.ParkCode).jpg" style="width:400px; padding: 20px; grid-area:photo;" />
             </a>
             <div grid-area:info>
-                <p style=" margin-top: 20px; font-weight:bold; font-size:24px;">@park.ParkName</p>
+                <p style=" margin-top: 10px; margin-bottom: 0px; font-weight:bold; font-size:24px; color:forestgreen">@park.ParkName</p>
+                <p style=" margin-top: 0px; font-size:16px; ">@park.State</p>
                 <p style=" margin-top: 20px; font-size:18px; ">@park.ParkDescription</p>
-
             </div>
         </div>
     }

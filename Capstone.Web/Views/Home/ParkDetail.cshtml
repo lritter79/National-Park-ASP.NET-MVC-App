@@ -8,13 +8,34 @@
 
     <div>
 
-        <img src="~/images/@(Model.ParkCode).jpg" style="width:300px; padding: 20px; " />
+        <img src="~/images/@(Model.ParkCode).jpg" style="width:auto; padding: 20px; " />
 
         <div>
-            <p style=" margin-top: 20px; font-weight:bold; font-size:20px;">@Model.ParkName</p>
+            <p style=" margin-top: 20px; font-weight:bold; font-size:20px; color:forestgreen">@Model.ParkName, @Model.State</p>
+            <p style=" margin-top: 0px; font-size:14px; ">Founded @Model.YearFounded</p>
+            <div style="color:white; background-color:forestgreen; border-radius: 20px; padding: 15px;">
+                <p style=" font-size:14px; margin:0px;">@Model.InspirationalQuote</p>
+                <p style=" font-size:14px; margin:0px;"><i>@Model.InspirationalQuoteSource</i></p>
+            </div>
             <p style=" margin-top: 20px; font-size:14px; ">@Model.ParkDescription</p>
-            <p style=" margin-top: 20px; font-size:14px; ">@Model.InspirationalQuote</p>
-            <p style=" margin-top: 20px; font-size:14px; ">@Model.InspirationalQuoteSource</p>
+        </div>
+
+        <div>
+            <div style="color:white; background-color:forestgreen; border-radius: 20px; padding: 15px; width: 300px;">
+                <p style=" font-size:18px; margin:0px;"><b>Geographical Information</b></p>
+                <p style=" font-size:14px; margin:0px;"><b>Acreage: </b>@Model.Acreage</p>
+                <p style=" font-size:14px; margin:0px;"><b>Elevation: </b>@Model.ElevationInFeet ft.</p>
+                <p style=" font-size:14px; margin:0px;"><b>Miles Of Trail: </b>@Model.MilesOfTrail</p>
+                <p style=" font-size:14px; margin:0px;"><b>Number of Campsites: </b>@Model.NumberOfCampsites</p>
+            </div>
+            <div style="color:white; background-color:forestgreen; border-radius: 20px; padding: 15px; width: 300px;">
+                <p style=" font-size:18px; margin:0px;"><b>Other Information</b></p>
+                <p style=" font-size:14px; margin:0px;"><b>Annual Visitors: </b>@Model.AnnualVisitorCount</p>
+                <p style=" font-size:14px; margin:0px;"><b>Climate: </b>@Model.Climate</p>
+                <p style=" font-size:14px; margin:0px;"><b>Entry Fee: </b>$@Model.EntryFee per car</p>
+                <p style=" font-size:14px; margin:0px;"><b>Number of Animal Species: </b>@Model.NumberOfAnimalSpecies</p>
+            </div>
+
         </div>
     </div>
 </section>
