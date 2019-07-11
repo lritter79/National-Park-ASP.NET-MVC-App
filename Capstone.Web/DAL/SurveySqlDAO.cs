@@ -20,6 +20,7 @@ namespace Capstone.Web.DAL
         {
             return new SurveyResult()
             {
+                ParkName = Convert.ToString(reader["name"]),
                 SurveyId = Convert.ToInt32(reader["sureveyId"]),
                 ParkCode = Convert.ToInt32(reader["parkCode"]),
                 EmailAddress = Convert.ToString(reader["emailAddress"]),
@@ -36,7 +37,7 @@ namespace Capstone.Web.DAL
                 {
 
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand("SELECT * from survey_result;", conn);
+                    SqlCommand cmd = new SqlCommand("SELECT name, surveyId, parkCode, emailAddress, state from survey_result INNER JOIN parks ON survey_result.parkCode=parks.parkCode;", conn);
 
                     SqlDataReader reader = cmd.ExecuteReader();
                     while (reader.Read())

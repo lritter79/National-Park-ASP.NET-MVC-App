@@ -11,9 +11,24 @@ namespace Capstone.Web.Controllers
 {
     public class SurveyController : Controller
     {
+        private ISurveyDAO surveyDAO { get; }
+
+        public SurveyController(ISurveyDAO surveyDAO)
+        {
+            this.surveyDAO = surveyDAO;
+        }
+
         public IActionResult TakeSurvey()
         {
             return View();
+        }
+
+        public IActionResult Results()
+        {
+            
+            IList <SurveyResult> surveys = surveyDAO.SurveyResults();
+
+            return View(surveys);
         }
     }
 }
