@@ -35,7 +35,7 @@ namespace Capstone.Web.Controllers
         {
             
             NationalPark park = nationalParkDAO.GetParkByCode(id);
-            park.Forecast = weatherDAO.GetFiveDayForecast(id);
+            park.FiveDayForecast = weatherDAO.GetFiveDayForecast(id);
             return View(park);
         }
 
