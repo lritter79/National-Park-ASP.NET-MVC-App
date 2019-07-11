@@ -32,7 +32,7 @@ namespace Capstone.Web.Models
             new SelectListItem() { Text = "Extremely Active" }
         };
 
-        public static List<SelectListItem> Levels = new List<SelectListItem>()
+        public List<SelectListItem> Levels = new List<SelectListItem>()
         {
             new SelectListItem() { Text = "Inactive" },
             new SelectListItem() { Text = "Sedentary" },
@@ -40,7 +40,9 @@ namespace Capstone.Web.Models
             new SelectListItem() { Text = "Extremely Active" }
         };
 
-        public static List<SelectListItem> States = new List<SelectListItem>()
+        public List<SelectListItem> ParksMenu { get; set; }
+
+        public List<SelectListItem> StatesList = new List<SelectListItem>()
             {
                 new SelectListItem() {Text="Alabama", Value="AL"},
                 new SelectListItem() { Text="Alaska", Value="AK"},
@@ -94,5 +96,6 @@ namespace Capstone.Web.Models
                 new SelectListItem() { Text="Wisconsin", Value="WI"},
                 new SelectListItem() { Text="Wyoming", Value="WY"}
             };
+
     }
 }

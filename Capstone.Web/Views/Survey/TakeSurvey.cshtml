@@ -15,27 +15,27 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             
             <div class="form-group">
-                <label asp-for="ParkCode" class="control-label"></label>
-                <input asp-for="ParkCode" class="form-control" />
+                <label class="control-label">Select your favorite park</label>
+                <select asp-for="ParkCode" asp-items="@Model.ParksMenu" class="form-control"></select>
                 <span asp-validation-for="ParkCode" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="EmailAddress" class="control-label"></label>
+                <label class="control-label"> What's your email?</label>
                 <input asp-for="EmailAddress" class="form-control" />
                 <span asp-validation-for="EmailAddress" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="State" class="control-label"></label>
-                <input asp-for="State" class="form-control" />
+                <label class="control-label">Which state are you in?</label>
+                <select asp-for="State" asp-items="@Model.StatesList" class="form-control"></select>
                 <span asp-validation-for="State" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ActivityLevel" class="control-label"></label>
-                <input asp-for="ActivityLevel" class="form-control" />
+                <label class="control-label"> How active are you?</label>
+                <select asp-for="ActivityLevel" asp-items="@Model.Levels" class="form-control"></select>
                 <span asp-validation-for="ActivityLevel" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Submit" class="btn btn-default" />
             </div>
         </form>
     </div>
