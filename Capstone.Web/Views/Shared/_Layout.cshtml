@@ -15,12 +15,16 @@
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
+
 </head>
-
 <body>
-    <img src="~/images/logo.png" style="width:400px; margin-top: 20px; margin-left: 100px;" />
+    <header>
+        <div>
+            <img src="~/images/logo.png" style="width:400px; margin-top: 20px; margin-left: 100px;" />
+        </div>
+    </header>
 
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-inverse @*navbar-fixed-top*@">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">

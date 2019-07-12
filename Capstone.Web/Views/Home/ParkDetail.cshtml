@@ -37,11 +37,12 @@
             </div>
         </div>
 
+        @****************************************************************************************************@
 
         <div style=" padding: 0px; margin: 0px;">
             <p style=" margin-top: 20px; font-weight:bold; font-size:20px; color:forestgreen; text-align:center;">Five Day Forecast</p>
             <div style="display: flex; flex-direction: row; justify-content: space-between;">
-                <div style="width:175px; padding: 0px; margin: 0px;">
+                <div style="width:250px; padding: 0px; margin: 0px;">
                     <p style=" margin-top: 20px; font-weight:bold; font-size:14px; color:forestgreen; text-align:center;">Today's Conditions</p>
 
                     <img src="~/images/@(Model.FiveDayForecast[0].Forecast).png" style="width:225px; padding: 0px; margin: 0px;" />
@@ -51,50 +52,41 @@
                     <p style=" font-size:14px; margin:0px; text-align:center;">
                         High: @Model.FiveDayForecast[0].HighTemp
                     </p>
+
                     <p style=" margin-top: 20px; font-weight:bold; font-size:14px; color:red; text-align:center;">@Model.ForecastAdvisoryMessagePairs[Model.FiveDayForecast[0].Forecast]</p>
 
+                    @if (@Model.FiveDayForecast[0].HighTemp >= 75)
+                    {
+                    <p style=" margin-top: 20px; font-weight:bold; font-size:14px; color:red; text-align:center;">ALERT: Bring an extra gallon of water</p>
+                    }
+                    @if (@Model.FiveDayForecast[0].LowTemp <= (@Model.FiveDayForecast[0].HighTemp - 20))
+                    {
+                    <p style=" margin-top: 20px; font-weight:bold; font-size:14px; color:red; text-align:center;">ALERT: Wear breathable layers</p>
+                    }
+                    @if (@Model.FiveDayForecast[0].LowTemp <= 20)
+                    {
+                    <p style=" margin-top: 20px; font-weight:bold; font-size:14px; color:red; text-align:center;">ALERT: Risk of frostbite</p>
+                    }
                 </div>
 
+                @for (int i = 1; i < 5; i++)
+                {
+                    <div style="width:175px; padding: 0px; margin: 0px;">
+                        <img src="~/images/@(Model.FiveDayForecast[i].Forecast).png" style="width:150px; padding: 0px; margin: 0px;" />
+                        <p style=" font-size:14px; margin:0px; text-align:center">
+                            Low: @Model.FiveDayForecast[i].LowTemp
+                        </p>
+                        <p style=" font-size:14px; margin:0px; text-align:center;">
+                            High: @Model.FiveDayForecast[i].HighTemp
+                        </p>
+                    </div>
+
+                }
 
 
-
-                <div style="width:175px; padding: 0px; margin: 0px;">
-                    <img src="~/images/@(Model.FiveDayForecast[1].Forecast).png" style="width:150px; padding: 0px; margin: 0px;" />
-                    <p style=" font-size:14px; margin:0px; text-align:center">
-                        Low: @Model.FiveDayForecast[1].LowTemp
-                    </p>
-                    <p style=" font-size:14px; margin:0px; text-align:center;">
-                        High: @Model.FiveDayForecast[1].HighTemp
-                    </p>
-                </div>
-                <div style="width:175px; padding: 0px; margin: 0px;">
-                    <img src="~/images/@(Model.FiveDayForecast[2].Forecast).png" style="width:150px; padding: 0px; margin: 0px;" />
-                    <p style=" font-size:14px; margin:0px; text-align:center">
-                        Low: @Model.FiveDayForecast[2].LowTemp
-                    </p>
-                    <p style=" font-size:14px; margin:0px; text-align:center;">
-                        High: @Model.FiveDayForecast[2].HighTemp
-                    </p>
-                </div>
-                <div style="width:175px; padding: 0px; margin: 0px;">
-                    <img src="~/images/@(Model.FiveDayForecast[3].Forecast).png" style="width:150px; padding: 0px; margin: 0px;" />
-                    <p style=" font-size:14px; margin:0px; text-align:center">
-                        Low: @Model.FiveDayForecast[3].LowTemp
-                    </p>
-                    <p style=" font-size:14px; margin:0px; text-align:center;">
-                        High: @Model.FiveDayForecast[3].HighTemp
-                    </p>
-                </div>
-                <div style="width:175px; padding: 0px; margin: 0px;">
-                    <img src="~/images/@(Model.FiveDayForecast[4].Forecast).png" style="width:150px; padding: 0px; margin: 0px;" />
-                    <p style=" font-size:14px; margin:0px; text-align:center">
-                        Low: @Model.FiveDayForecast[4].LowTemp
-                    </p>
-                    <p style=" font-size:14px; margin:0px; text-align:center;">
-                        High: @Model.FiveDayForecast[4].HighTemp
-                    </p>
-                </div>
             </div>
+            <p style=" margin-top: 0px; font-weight:bold; font-size:14px; color:black; text-align:right;">Farenheit | Celcius</p>
+
         </div>
     </div>
 </section>
