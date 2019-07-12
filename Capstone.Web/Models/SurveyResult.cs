@@ -27,7 +27,7 @@ namespace Capstone.Web.Models
         [Required(ErrorMessage = "Activity level is required")]
         public string ActivityLevel { get; set; }
 
-        public static Dictionary<string, string> ParkCodekeyValuePairs = new Dictionary<string, string>();
+        public Dictionary<string, string> ParkCodekeyValuePairs = new Dictionary<string, string>();
       
         public string GetParkCode()
         {
