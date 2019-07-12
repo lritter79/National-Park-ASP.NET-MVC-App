@@ -25,10 +25,12 @@ namespace Capstone.Web.Controllers
         {
             var allParks = nationalParkDAO.GetAllParks();
             var survey = new SurveyResult();
-            survey.ParksMenu = new List<SelectListItem>();
+            
+            
             foreach(NationalPark park in allParks)
             {
-                survey.ParksMenu.Add(new SelectListItem(park.ParkName, park.ParkCode));
+                SurveyResult.ParkCodekeyValuePairs.Add(park.ParkName, park.ParkCode);
+                survey.ParksMenu.Add(new SelectListItem() { Text = park.ParkName });
             }
             return View(survey);
         }
@@ -39,15 +41,23 @@ namespace Capstone.Web.Controllers
         {
             if (!ModelState.IsValid)
             {
+                var allParks = nationalParkDAO.GetAllParks();
+               
                 
+
+                foreach (NationalPark park in allParks)
+                {
+                    
+                }
                 return View(survey);
+                
             }
             else
             {
-                
 
+                surveyDAO.SaveSurvey(survey);
                 
-                return RedirectToAction("Index");
+                return RedirectToAction("Results");
             }
         }
 

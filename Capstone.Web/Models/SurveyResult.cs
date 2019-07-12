@@ -10,9 +10,12 @@ namespace Capstone.Web.Models
     public class SurveyResult
     {
         // TODO make select item value pairs for park name and park ID
+        [Display(Name = "Park Name")]
+        [Required(ErrorMessage = "Park name is required")]
         public string ParkName { get; set; }
         public int SurveyId { get; set; }
-        public int ParkCode { get; set; }
+        public string ParkCode { get; set; }
+        
         [Display(Name = "Email")]
         [EmailAddress]
         [Required(ErrorMessage = "Email is required")]
@@ -24,7 +27,13 @@ namespace Capstone.Web.Models
         [Required(ErrorMessage = "Activity level is required")]
         public string ActivityLevel { get; set; }
 
-        public static List<SelectListItem> Names = new List<SelectListItem>()
+        public static Dictionary<string, string> ParkCodekeyValuePairs = new Dictionary<string, string>();
+      
+        public string GetParkCode()
+        {
+            return ParkCodekeyValuePairs[ParkName];
+        }
+        public static List<SelectListItem> Levels = new List<SelectListItem>()
         {
             new SelectListItem() { Text = "Inactive" },
             new SelectListItem() { Text = "Sedentary" },
@@ -32,69 +41,61 @@ namespace Capstone.Web.Models
             new SelectListItem() { Text = "Extremely Active" }
         };
 
-        public List<SelectListItem> Levels = new List<SelectListItem>()
-        {
-            new SelectListItem() { Text = "Inactive" },
-            new SelectListItem() { Text = "Sedentary" },
-            new SelectListItem() { Text = "Active" },
-            new SelectListItem() { Text = "Extremely Active" }
-        };
+        public List<SelectListItem> ParksMenu = new List<SelectListItem>();
 
-        public List<SelectListItem> ParksMenu { get; set; }
-
-        public List<SelectListItem> StatesList = new List<SelectListItem>()
+        public static List<SelectListItem> StatesList = new List<SelectListItem>()
             {
-                new SelectListItem() {Text="Alabama", Value="AL"},
-                new SelectListItem() { Text="Alaska", Value="AK"},
-                new SelectListItem() { Text="Arizona", Value="AZ"},
-                new SelectListItem() { Text="Arkansas", Value="AR"},
-                new SelectListItem() { Text="California", Value="CA"},
-                new SelectListItem() { Text="Colorado", Value="CO"},
-                new SelectListItem() { Text="Connecticut", Value="CT"},
-                new SelectListItem() { Text="District of Columbia", Value="DC"},
-                new SelectListItem() { Text="Delaware", Value="DE"},
-                new SelectListItem() { Text="Florida", Value="FL"},
-                new SelectListItem() { Text="Georgia", Value="GA"},
-                new SelectListItem() { Text="Hawaii", Value="HI"},
-                new SelectListItem() { Text="Idaho", Value="ID"},
-                new SelectListItem() { Text="Illinois", Value="IL"},
-                new SelectListItem() { Text="Indiana", Value="IN"},
-                new SelectListItem() { Text="Iowa", Value="IA"},
-                new SelectListItem() { Text="Kansas", Value="KS"},
-                new SelectListItem() { Text="Kentucky", Value="KY"},
-                new SelectListItem() { Text="Louisiana", Value="LA"},
-                new SelectListItem() { Text="Maine", Value="ME"},
-                new SelectListItem() { Text="Maryland", Value="MD"},
-                new SelectListItem() { Text="Massachusetts", Value="MA"},
-                new SelectListItem() { Text="Michigan", Value="MI"},
-                new SelectListItem() { Text="Minnesota", Value="MN"},
-                new SelectListItem() { Text="Mississippi", Value="MS"},
-                new SelectListItem() { Text="Missouri", Value="MO"},
-                new SelectListItem() { Text="Montana", Value="MT"},
-                new SelectListItem() { Text="Nebraska", Value="NE"},
-                new SelectListItem() { Text="Nevada", Value="NV"},
-                new SelectListItem() { Text="New Hampshire", Value="NH"},
-                new SelectListItem() { Text="New Jersey", Value="NJ"},
-                new SelectListItem() { Text="New Mexico", Value="NM"},
-                new SelectListItem() { Text="New York", Value="NY"},
-                new SelectListItem() { Text="North Carolina", Value="NC"},
-                new SelectListItem() { Text="North Dakota", Value="ND"},
-                new SelectListItem() { Text="Ohio", Value="OH"},
-                new SelectListItem() { Text="Oklahoma", Value="OK"},
-                new SelectListItem() { Text="Oregon", Value="OR"},
-                new SelectListItem() { Text="Pennsylvania", Value="PA"},
-                new SelectListItem() { Text="Rhode Island", Value="RI"},
-                new SelectListItem() { Text="South Carolina", Value="SC"},
-                new SelectListItem() { Text="South Dakota", Value="SD"},
-                new SelectListItem() { Text="Tennessee", Value="TN"},
-                new SelectListItem() { Text="Texas", Value="TX"},
-                new SelectListItem() { Text="Utah", Value="UT"},
-                new SelectListItem() { Text="Vermont", Value="VT"},
-                new SelectListItem() { Text="Virginia", Value="VA"},
-                new SelectListItem() { Text="Washington", Value="WA"},
-                new SelectListItem() { Text="West Virginia", Value="WV"},
-                new SelectListItem() { Text="Wisconsin", Value="WI"},
-                new SelectListItem() { Text="Wyoming", Value="WY"}
+                new SelectListItem() {Text="Alabama"},
+                new SelectListItem() { Text="Alaska"},
+                new SelectListItem() { Text="Arizona"},
+                new SelectListItem() { Text="Arkansas"},
+                new SelectListItem() { Text="California"},
+                new SelectListItem() { Text="Colorado"},
+                new SelectListItem() { Text="Connecticut"},
+                new SelectListItem() { Text="District of Columbia"},
+                new SelectListItem() { Text="Delaware"},
+                new SelectListItem() { Text="Florida"},
+                new SelectListItem() { Text="Georgia"},
+                new SelectListItem() { Text="Hawaii"},
+                new SelectListItem() { Text="Idaho"},
+                new SelectListItem() { Text="Illinois"},
+                new SelectListItem() { Text="Indiana"},
+                new SelectListItem() { Text="Iowa"},
+                new SelectListItem() { Text="Kansas"},
+                new SelectListItem() { Text="Kentucky"},
+                new SelectListItem() { Text="Louisiana"},
+                new SelectListItem() { Text="Maine"},
+                new SelectListItem() { Text="Maryland"},
+                new SelectListItem() { Text="Massachusetts"},
+                new SelectListItem() { Text="Michigan"},
+                new SelectListItem() { Text="Minnesota"},
+                new SelectListItem() { Text="Mississippi"},
+                new SelectListItem() { Text="Missouri"},
+                new SelectListItem() { Text="Montana"},
+                new SelectListItem() { Text="Nebraska"},
+                new SelectListItem() { Text="Nevada"},
+                new SelectListItem() { Text="New Hampshire"},
+                new SelectListItem() { Text="New Jersey"},
+                new SelectListItem() { Text="New Mexico"},
+                new SelectListItem() { Text="New York"},
+                new SelectListItem() { Text="North Carolina"},
+                new SelectListItem() { Text="North Dakota"},
+                new SelectListItem() { Text="Ohio"},
+                new SelectListItem() { Text="Oklahoma"},
+                new SelectListItem() { Text="Oregon"},
+                new SelectListItem() { Text="Pennsylvania"},
+                new SelectListItem() { Text="Rhode Island"},
+                new SelectListItem() { Text="South Carolina"},
+                new SelectListItem() { Text="South Dakota"},
+                new SelectListItem() { Text="Tennessee"},
+                new SelectListItem() { Text="Texas"},
+                new SelectListItem() { Text="Utah"},
+                new SelectListItem() { Text="Vermont"},
+                new SelectListItem() { Text="Virginia"},
+                new SelectListItem() { Text="Washington"},
+                new SelectListItem() { Text="West Virginia"},
+                new SelectListItem() { Text="Wisconsin"},
+                new SelectListItem() { Text="Wyoming"}
             };
 
     }

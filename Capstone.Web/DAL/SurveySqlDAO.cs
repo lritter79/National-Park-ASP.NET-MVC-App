@@ -20,9 +20,9 @@ namespace Capstone.Web.DAL
         {
             return new SurveyResult()
             {
-                ParkName = Convert.ToString(reader["name"]),
-                SurveyId = Convert.ToInt32(reader["sureveyId"]),
-                ParkCode = Convert.ToInt32(reader["parkCode"]),
+                ParkName = Convert.ToString(reader["parkName"]),
+                SurveyId = Convert.ToInt32(reader["surveyId"]),
+                ParkCode = Convert.ToString(reader["parkCode"]),
                 EmailAddress = Convert.ToString(reader["emailAddress"]),
                 State = Convert.ToString(reader["state"])
             };
@@ -35,9 +35,12 @@ namespace Capstone.Web.DAL
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand($"INSERT INTO suvey_result (parkCode, emailAddress, state, activityLevel) VALUES ({result.ParkCode}, @address, {result.State}, {result.ActivityLevel});", conn);
+                    SqlCommand cmd = new SqlCommand("INSERT INTO survey_result (parkCode, emailAddress, state, activityLevel) VALUES (@code, @address, @state, @level);", conn);
                     
+                    cmd.Parameters.AddWithValue("@code", result.GetParkCode());
                     cmd.Parameters.AddWithValue("@address", result.EmailAddress);
+                    cmd.Parameters.AddWithValue("@state", result.State);
+                    cmd.Parameters.AddWithValue("@level", result.ActivityLevel);
                     
 
                     cmd.ExecuteNonQuery();
@@ -60,7 +63,7 @@ namespace Capstone.Web.DAL
                 {
 
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand("SELECT name, surveyId, parkCode, emailAddress, state from survey_result INNER JOIN parks ON survey_result.parkCode=parks.parkCode;", conn);
+                    SqlCommand cmd = new SqlCommand("SELECT parkName, park.parkCode, surveyId, park.state, emailAddress from survey_result INNER JOIN park ON survey_result.parkCode=park.parkCode;", conn);
 
                     SqlDataReader reader = cmd.ExecuteReader();
                     while (reader.Read())

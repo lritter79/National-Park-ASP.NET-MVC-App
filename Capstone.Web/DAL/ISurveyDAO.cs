@@ -15,6 +15,9 @@ namespace Capstone.Web.DAL
         /// <returns></returns>
         IList<SurveyResult> SurveyResults();
 
-        
+
+        void SaveSurvey(SurveyResult result);
+
+
     }
 }
