@@ -33,6 +33,24 @@ namespace Capstone.Web.Controllers
             return View(survey);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult TakeSurvey(SurveyResult survey)
+        {
+            if (!ModelState.IsValid)
+            {
+                
+                return View(survey);
+            }
+            else
+            {
+                
+
+                
+                return RedirectToAction("Index");
+            }
+        }
+
         public IActionResult Results()
         {
             

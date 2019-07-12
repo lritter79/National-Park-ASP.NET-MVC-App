@@ -28,6 +28,29 @@ namespace Capstone.Web.DAL
             };
         }
 
+        public void SaveSurvey(SurveyResult result)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand($"INSERT INTO suvey_result (parkCode, emailAddress, state, activityLevel) VALUES ({result.ParkCode}, @address, {result.State}, {result.ActivityLevel});", conn);
+                    
+                    cmd.Parameters.AddWithValue("@address", result.EmailAddress);
+                    
+
+                    cmd.ExecuteNonQuery();
+
+
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw;
+            }
+        }
+
         public IList<SurveyResult> SurveyResults()
         {
             IList<SurveyResult> surveys = new List<SurveyResult>();
