@@ -37,6 +37,8 @@ namespace Capstone.Web.Controllers
 
             return survey;
         }
+
+        [HttpGet]
         public IActionResult TakeSurvey()
         {
             
@@ -66,6 +68,7 @@ namespace Capstone.Web.Controllers
             }
         }
 
+        [HttpGet]
         public IActionResult Results()
         {
             
