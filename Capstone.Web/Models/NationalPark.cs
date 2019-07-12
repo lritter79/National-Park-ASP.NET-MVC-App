@@ -29,7 +29,11 @@ namespace Capstone.Web.Models
         public IList<Weather> FiveDayForecast { get; set; }
             
 
-
+        public double GetTempInCelsius (int inFahrenheit)
+        {
+            double inCelsius = (inFahrenheit - 32) * 0.55555555556;
+            return inCelsius;
+        }
         public Dictionary<string, string> ForecastAdvisoryMessagePairs = new Dictionary<string, string>()
         {
             {"snow","ALERT: Pack snowshoes"},
