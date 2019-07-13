@@ -16,6 +16,11 @@ namespace Capstone.Web.DAL
             this.connectionString = connectionString;
         }
 
+        /// <summary>
+        /// returns a line from from SQL as a NationalPark object
+        /// </summary>
+        /// <param name="reader"></param>
+        /// <returns></returns>
         private NationalPark MapRowToNationalPark(SqlDataReader reader)
         {
             return new NationalPark()
@@ -48,6 +53,10 @@ namespace Capstone.Web.DAL
             return GetAllParks().FirstOrDefault(p => p.ParkCode == parkCode);
         }
 
+        /// <summary>
+        /// returns all national parks
+        /// </summary>
+        /// <returns></returns>
         public IList<NationalPark> GetAllParks()
         {
             IList<NationalPark> nationalParks = new List<NationalPark>();
@@ -62,10 +71,9 @@ namespace Capstone.Web.DAL
                         SqlDataReader reader = cmd.ExecuteReader();
                         while (reader.Read())
                         {
+                            
                             nationalParks.Add(MapRowToNationalPark(reader));
-                        }
-
-                    
+                        }    
                 }
 
             }

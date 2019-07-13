@@ -1,4 +1,4 @@
-﻿@model IList<SurveyResult>
+﻿@model Dictionary<string, int>
 
 @{
    ViewData["Title"] = "Results";
@@ -6,8 +6,8 @@
 
     <h1>Results</h1>
 
-@foreach (SurveyResult survey in Model)
+@foreach (KeyValuePair<string, int> keyValuePair in Model)
 {
-    <p>@survey.ParkName</p>
+    <p>@(keyValuePair.Key): @(keyValuePair.Value)</p>
 }
 

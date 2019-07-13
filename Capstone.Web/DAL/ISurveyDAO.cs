@@ -13,7 +13,7 @@ namespace Capstone.Web.DAL
         /// Get all Survey Resullts
         /// </summary>
         /// <returns></returns>
-        IList<SurveyResult> SurveyResults();
+        Dictionary<string,int> SurveyResults();
 
 
         void SaveSurvey(SurveyResult result);

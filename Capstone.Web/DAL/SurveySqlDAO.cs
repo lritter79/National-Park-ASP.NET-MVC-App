@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Capstone.Web.Models;
 using System.Data.SqlClient;
+using System.Data;
 
 namespace Capstone.Web.DAL
 {
@@ -16,6 +15,11 @@ namespace Capstone.Web.DAL
             this.connectionString = connectionString;
         }
 
+        /// <summary>
+        /// converts a row from SQL reader to a surveyResult object
+        /// </summary>
+        /// <param name="reader"></param>
+        /// <returns></returns>
         private SurveyResult MapRowToSurveyResult(SqlDataReader reader)
         {
             return new SurveyResult()
@@ -28,6 +32,10 @@ namespace Capstone.Web.DAL
             };
         }
 
+        /// <summary>
+        /// saves and individual survey result
+        /// </summary>
+        /// <param name="result"></param>
         public void SaveSurvey(SurveyResult result)
         {
             try
@@ -53,22 +61,25 @@ namespace Capstone.Web.DAL
                 throw;
             }
         }
-
-        public IList<SurveyResult> SurveyResults()
+        /// <summary>
+        /// gets all rows in the survey results table, still needs a way to return results by count
+        /// </summary>
+        /// <returns></returns>
+        public Dictionary<string, int> SurveyResults()
         {
-            IList<SurveyResult> surveys = new List<SurveyResult>();
+            Dictionary<string, int> surveys = new Dictionary<string, int>();
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
 
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand("SELECT parkName, park.parkCode, surveyId, park.state, emailAddress from survey_result INNER JOIN park ON survey_result.parkCode=park.parkCode;", conn);
+                    SqlCommand cmd = new SqlCommand("SELECT parkName, COUNT(survey_result.parkCode) as votes from survey_result LEFT JOIN park ON survey_result.parkCode = park.parkCode group by parkName order by votes desc;", conn);
 
                     SqlDataReader reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
-                        surveys.Add(MapRowToSurveyResult(reader));
+                        surveys.Add(reader.GetString(0), reader.GetInt32(1));
                     }
                 }
             }

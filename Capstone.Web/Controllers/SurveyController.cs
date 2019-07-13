@@ -56,8 +56,8 @@ namespace Capstone.Web.Controllers
         [HttpGet]
         public IActionResult Results()
         {
-            
-            IList <SurveyResult> surveys = surveyDAO.SurveyResults();
+
+            Dictionary<string, int> surveys = surveyDAO.SurveyResults();
 
             return View(surveys);
         }

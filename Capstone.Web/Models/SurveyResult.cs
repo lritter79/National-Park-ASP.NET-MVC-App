@@ -9,14 +9,17 @@ namespace Capstone.Web.Models
 {
     public class SurveyResult
     {
-
+        /// <summary>
+        /// this method is used to populate an list in surveyResult related to national parks in the database
+        /// this way, we can dynamically generate our lists instead of having them hard coded
+        /// </summary>
+        /// <param name="nationalParks"></param>
         public void fillLists(IList<NationalPark> nationalParks)
         {
             foreach (NationalPark park in nationalParks)
             {
                 ParkCodekeyValuePairs.Add(park.ParkName, park.ParkCode);
                 ParksMenu.Add(new SelectListItem() { Text = park.ParkName });
-
             }
             
         }
@@ -37,7 +40,7 @@ namespace Capstone.Web.Models
         [Display(Name = "Activity Level")]
         [Required(ErrorMessage = "Activity level is required")]
         public string ActivityLevel { get; set; }
-
+        
         public Dictionary<string, string> ParkCodekeyValuePairs = new Dictionary<string, string>();
       
         public string GetParkCode()
