@@ -9,6 +9,17 @@ namespace Capstone.Web.Models
 {
     public class SurveyResult
     {
+
+        public void fillLists(IList<NationalPark> nationalParks)
+        {
+            foreach (NationalPark park in nationalParks)
+            {
+                ParkCodekeyValuePairs.Add(park.ParkName, park.ParkCode);
+                ParksMenu.Add(new SelectListItem() { Text = park.ParkName });
+
+            }
+            
+        }
         // TODO make select item value pairs for park name and park ID
         [Display(Name = "Park Name")]
         [Required(ErrorMessage = "Park name is required")]
