@@ -61,8 +61,9 @@ namespace Capstone.Web.DAL
                 throw;
             }
         }
+
         /// <summary>
-        /// gets all rows in the survey results table, still needs a way to return results by count
+        /// returns a dictionary where the park name is the key and the votes in survey_result is the value
         /// </summary>
         /// <returns></returns>
         public Dictionary<string, int> SurveyResults()

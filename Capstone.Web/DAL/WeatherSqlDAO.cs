@@ -16,6 +16,11 @@ namespace Capstone.Web.DAL
             this.connectionString = connectionString;
         }
 
+        /// <summary>
+        /// takes reader input and returns a weather object with propeties from the database
+        /// </summary>
+        /// <param name="reader"></param>
+        /// <returns></returns>
         private Weather MapRowToWeather(SqlDataReader reader)
         {
             return new Weather()
@@ -27,6 +32,12 @@ namespace Capstone.Web.DAL
                 Forecast = Convert.ToString(reader["forecast"])
             };
         }
+
+        /// <summary>
+        /// gets the weather for an individual parks
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
         public IList<Weather> GetFiveDayForecast(string Id)
         {
             IList<Weather> FiveDayForecast = new List<Weather>();
