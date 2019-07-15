@@ -11,5 +11,6 @@ namespace Capstone.Web.DAL
     {
         NationalPark GetParkByCode(string parkCode);
         IList<NationalPark> GetAllParks();
+        Dictionary<NationalPark, int> GetParksByVotes(Dictionary<string, int> results);
     }
 }

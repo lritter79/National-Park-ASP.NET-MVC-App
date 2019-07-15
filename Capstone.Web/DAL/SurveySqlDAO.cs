@@ -75,7 +75,7 @@ namespace Capstone.Web.DAL
                 {
 
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand("SELECT parkName, COUNT(survey_result.parkCode) as votes from survey_result LEFT JOIN park ON survey_result.parkCode = park.parkCode group by parkName order by votes desc;", conn);
+                    SqlCommand cmd = new SqlCommand("SELECT parkName, COUNT(survey_result.parkCode) as votes from survey_result LEFT JOIN park ON survey_result.parkCode = park.parkCode group by parkName order by votes desc, parkName;", conn);
 
                     SqlDataReader reader = cmd.ExecuteReader();
                     while (reader.Read())

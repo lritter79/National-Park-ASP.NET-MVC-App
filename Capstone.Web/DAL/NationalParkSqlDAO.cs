@@ -85,5 +85,46 @@ namespace Capstone.Web.DAL
 
             return nationalParks;
         }
+
+        public Dictionary<NationalPark, int> GetParksByVotes(Dictionary<string, int> results)
+        {
+            Dictionary<NationalPark, int> voteParkPairs = new Dictionary<NationalPark, int>();
+            foreach (KeyValuePair<string, int> entry in results)
+            {
+                try
+                {
+                    using (SqlConnection conn = new SqlConnection(connectionString))
+                    {
+
+                        conn.Open();
+                        SqlCommand cmd = new SqlCommand("SELECT * from park ORDER BY parkName;", conn);
+
+                        SqlDataReader reader = cmd.ExecuteReader();
+                        int i = 0;
+                        while (reader.Read())
+                        {
+                            NationalPark park = MapRowToNationalPark(reader);
+                            if (entry.Key == park.ParkName)
+                            {
+                                voteParkPairs.Add(park, results[park.ParkName]);
+                            }
+
+                        }
+
+
+                    }
+                    
+                }
+
+                catch (SqlException)
+                {
+                    throw;
+                }
+
+            }
+            
+
+            return voteParkPairs;
+        }
     }
 }

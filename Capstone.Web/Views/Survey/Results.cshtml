@@ -1,29 +1,43 @@
-﻿@model Dictionary<string, int>
+﻿@model Dictionary<NationalPark, int>
 
 @{
     ViewData["Title"] = "Results";
 }
 
+<style>
+    .vote {
+        margin-left: 20px; 
+        padding: 10px; 
+        margin-bottom: 20px;
+    }
+
+    .result {
+        margin-left: 20px; 
+        padding: 10px; 
+        border: 2px solid forestgreen; 
+        border-radius: 2px;
+        margin-bottom: 20px;
+    }
+</style>
+
 <h1 style="padding:10px; text-align:center;">Results</h1>
 
-@foreach (KeyValuePair<string, int> keyValuePair in Model)
+@foreach (KeyValuePair<NationalPark, int> keyValuePair in Model)
 {
     @if (keyValuePair.Value == 1 && keyValuePair.Value > 0)
     {
-        <p style="margin-left: 20px; padding: 10px; border: 2px solid forestgreen;
-        border-radius: 5px;margin-bottom: 20px">
+        <p class="vote">
 
-            <b>@(keyValuePair.Key) </b>: @(keyValuePair.Value) Vote
+            <img src="~/images/@(keyValuePair.Key.ParkCode).jpg"/><span class="result"><b>@(keyValuePair.Key.ParkName) </b>:</span><span class="result">@(keyValuePair.Value) Vote</span> 
 
         </p>
     }
 
     else if (keyValuePair.Value > 1)
     {
-        <p style="margin-left: 20px; padding: 10px; border: 2px solid forestgreen;
-        border-radius: 5px;margin-bottom: 20px">
+        <p class="vote">
 
-            <b>@(keyValuePair.Key) </b>: @(keyValuePair.Value) Votes
+            <img src="~/images/@(keyValuePair.Key.ParkCode).jpg" /><span class="result"><b>@(keyValuePair.Key.ParkName) </b>:</span><span class="result">@(keyValuePair.Value) Votes</span> 
 
         </p>
     }

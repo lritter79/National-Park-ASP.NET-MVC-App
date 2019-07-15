@@ -25,9 +25,9 @@ namespace Tests
             {
                 connection.Open();
                 //Delete everything from our tables
-                //string cmdText = "delete from reservation; delete from site; delete from campground;delete from park; ";
-                //SqlCommand command = new SqlCommand(cmdText, connection);
-                //command.ExecuteNonQuery();
+                string cmdText = "delete from reservation; delete from site; delete from campground;delete from park; ";
+                SqlCommand command = new SqlCommand(cmdText, connection);
+                command.ExecuteNonQuery();
 
                 ////Add row to park table
                 //cmdText = $"INSERT INTO park VALUES('Twin Peaks', 'Washington', '1990-02-26', 2112, 119,'Twin Peaks is an American mystery horror drama television series created by Mark Frost and David Lynch that premiered on April 8, 1990.'); SELECT SCOPE_IDENTITY();";

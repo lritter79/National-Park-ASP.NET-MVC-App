@@ -58,8 +58,9 @@ namespace Capstone.Web.Controllers
         {
 
             Dictionary<string, int> surveys = surveyDAO.SurveyResults();
+            var parksToSurveys = nationalParkDAO.GetParksByVotes(surveys);
 
-            return View(surveys);
+            return View(parksToSurveys);
         }
     }
 }
