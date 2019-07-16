@@ -20,24 +20,31 @@
     }
 </style>
 
-<h1 style="padding:10px; text-align:center;">Results</h1>
+<h1 style="padding:10px; text-align:left;">Results</h1>
+<br />
+<p style="padding:10px; text-align:left;">Here are the results of our survey</p>
 
 @foreach (KeyValuePair<NationalPark, int> keyValuePair in Model)
 {
     @if (keyValuePair.Value == 1 && keyValuePair.Value > 0)
-    {
-        <p class="vote">
+     {
+        <p class="vote" id="@keyValuePair.Key.ParkCode">
+        <a asp-controller="home" asp-action="parkdetail" asp-route-id="@(keyValuePair.Key.ParkCode)">
+        <img src="~/images/@(keyValuePair.Key.ParkCode).jpg" style="width:200px;" />
+        </a>
 
-            <img src="~/images/@(keyValuePair.Key.ParkCode).jpg"/><span class="result"><b>@(keyValuePair.Key.ParkName) </b>:</span><span class="result">@(keyValuePair.Value) Vote</span> 
+        <span class="result"><b>@(keyValuePair.Key.ParkName) </b>:</span><span class="result">@(keyValuePair.Value) Vote</span>
 
         </p>
-    }
+     }
 
     else if (keyValuePair.Value > 1)
     {
-        <p class="vote">
-
-            <img src="~/images/@(keyValuePair.Key.ParkCode).jpg" /><span class="result"><b>@(keyValuePair.Key.ParkName) </b>:</span><span class="result">@(keyValuePair.Value) Votes</span> 
+        <p class="vote" id="@keyValuePair.Key.ParkCode">
+            <a asp-controller="home" asp-action="parkdetail" asp-route-id="@(keyValuePair.Key.ParkCode)">
+                <img src="~/images/@(keyValuePair.Key.ParkCode).jpg" style="width:200px;" />
+            </a>
+                <span class="result"><b>@(keyValuePair.Key.ParkName) </b>:</span><span class="result">@(keyValuePair.Value) Votes</span>
 
         </p>
     }

@@ -3,9 +3,14 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Text;
-
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Support.UI;
+using OpenQA.Selenium.Interactions;
+using OpenQA.Selenium.Support;
+using System.IO;
+using System.Reflection;
 using System.Data;
-
 using System.Transactions;
 
 namespace Tests
@@ -29,41 +34,35 @@ namespace Tests
                 SqlCommand command = new SqlCommand(cmdText, connection);
                 command.ExecuteNonQuery();
 
-                ////Add row to park table
-                //cmdText = $"INSERT INTO park VALUES('Twin Peaks', 'Washington', '1990-02-26', 2112, 119,'Twin Peaks is an American mystery horror drama television series created by Mark Frost and David Lynch that premiered on April 8, 1990.'); SELECT SCOPE_IDENTITY();";
-                //command = new SqlCommand(cmdText, connection);
-                //TwinPeaksParkId = Convert.ToInt32(command.ExecuteScalar());
+                //Add row to park table
+                cmdText = $"INSERT INTO park VALUES('TWPK','Twin Peaks', 'Washington','1990','420','69','42','cancelled','1990','1','Cooper Cooper', 'The Major', 'Under the sycamores', '11','119');";
+                command = new SqlCommand(cmdText, connection);
 
-                //cmdText = $"INSERT INTO park VALUES('Jellystone', 'Wyoming', '1990-02-26', 2112, 119,'Watch out for bears stealing picinic baskets.'); SELECT SCOPE_IDENTITY();";
-                //command = new SqlCommand(cmdText, connection);
+                cmdText = $"INSERT INTO park VALUES('JSNP','Jellystone', 'Wyoming','1990','420','69','42','cancelled','1990','1','Cooper Cooper', 'The Major', 'Under the sycamores', '11','119');";
+                command = new SqlCommand(cmdText, connection);
                 //JellyStoneParkId = Convert.ToInt32(command.ExecuteScalar());
+                cmdText = $"INSERT INTO park VALUES('CCL','Camp Crystal Lake', 'Wyoming','1990','420','69','42','cancelled','1990','1','Cooper Cooper', 'The Major', 'Under the sycamores', '11','119');";
+                command = new SqlCommand(cmdText, connection);
 
-                //// Add campgrounds to park
-                //cmdText = $"INSERT INTO campground VALUES ({TwinPeaksParkId}, 'Black Lodge', 01, 09, 420.00);SELECT SCOPE_IDENTITY();";
-                //command = new SqlCommand(cmdText, connection);
-                //BlackLodgeCampgroundId = Convert.ToInt32(command.ExecuteScalar());
+                cmdText = $"INSERT INTO park VALUES('LP','Linkin Park', 'Wyoming','1990','420','69','42','cancelled','1990','1','Cooper Cooper', 'The Major', 'Under the sycamores', '11','119');";
+                command = new SqlCommand(cmdText, connection);
 
-                //cmdText = $"INSERT INTO campground VALUES ({TwinPeaksParkId}, 'White Lodge', 01, 12, 240.00);SELECT SCOPE_IDENTITY();";
-                //command = new SqlCommand(cmdText, connection);
-                //WhiteLodgeCampgroundId = Convert.ToInt32(command.ExecuteScalar());
+                //// Add weather to park
+                cmdText = "INSERT INTO weather VALUES('JSNP',1,27,40,'snow');INSERT INTO weather VALUES('JSNP',2,31,43,'snow');INSERT INTO weather VALUES('JSNP',3,28,40,'partly cloudy');INSERT INTO weather VALUES('JSNP',4,24,34,'cloudy');INSERT INTO weather VALUES('JSNP',5,25,32,'snow');";
+                command = new SqlCommand(cmdText, connection);
 
-                //cmdText = $"INSERT INTO campground VALUES ({JellyStoneParkId}, 'Grey Lodge', 01, 12, 240.00);SELECT SCOPE_IDENTITY();";
-                //command = new SqlCommand(cmdText, connection);
-                //GreyLodgeCampgroundId = Convert.ToInt32(command.ExecuteScalar());
+                cmdText = "INSERT INTO weather VALUES('TWPK',1,27,40,'snow');INSERT INTO weather VALUES('TWPK',2,31,43,'snow');INSERT INTO weather VALUES('TWPK',3,28,40,'partly cloudy');INSERT INTO weather VALUES('TWPK',4,24,34,'cloudy');INSERT INTO weather VALUES('TWPK',5,25,32,'snow');";
+                command = new SqlCommand(cmdText, connection);
 
-                ////Add sites to campgrounds
-                //cmdText = $"INSERT INTO site VALUES ({BlackLodgeCampgroundId}, 9, 100, 1, 0, 1);SELECT SCOPE_IDENTITY();";
-                //command = new SqlCommand(cmdText, connection);
-                //BlackLodgeSiteId = Convert.ToInt32(command.ExecuteScalar());
+                cmdText = "INSERT INTO weather VALUES('CCL',1,27,40,'snow');INSERT INTO weather VALUES('CCL',2,31,43,'snow');INSERT INTO weather VALUES('CCL',3,28,40,'partly cloudy');INSERT INTO weather VALUES('CCL',4,24,34,'cloudy');INSERT INTO weather VALUES('CCL',5,25,32,'snow');";
+                command = new SqlCommand(cmdText, connection);
 
-                //cmdText = $"INSERT INTO site VALUES ({WhiteLodgeCampgroundId}, 9, 10, 1, 1, 0);SELECT SCOPE_IDENTITY();";
-                //command = new SqlCommand(cmdText, connection);
-                //WhiteLodgeSiteId = Convert.ToInt32(command.ExecuteScalar());
+                cmdText = "INSERT INTO weather VALUES('LP',1,27,40,'snow');INSERT INTO weather VALUES('LP',2,31,43,'snow');INSERT INTO weather VALUES('LP',3,28,40,'partly cloudy');INSERT INTO weather VALUES('LP',4,24,34,'cloudy');INSERT INTO weather VALUES('LP',5,25,32,'snow');";
+                command = new SqlCommand(cmdText, connection);
 
-                ////Add resevation to black lodge campsite
-                //cmdText = $"INSERT INTO reservation VALUES ({BlackLodgeSiteId}, 'Dale Cooper', '1991-02-26', '1991-04-26','1991-04-27');SELECT SCOPE_IDENTITY();";
-                //command = new SqlCommand(cmdText, connection);
-                //BlackLodgeReservationId = Convert.ToInt32(command.ExecuteScalar());
+                // Add surveys
+                cmdText = "INSERT INTO survey_result VALUES('JSNP', 'foo@bar.com', 'x', 'y');INSERT INTO survey_result VALUES('JSNP', 'foo@bar.com', 'x', 'y');INSERT INTO survey_result VALUES('TWPK', 'foo@bar.com', 'x', 'y');";
+                command = new SqlCommand(cmdText, connection);
 
             }
         }

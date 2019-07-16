@@ -6,7 +6,7 @@
 <section class="centeredPanel">
     <h2>Park Information</h2>
 
-    <div>
+    <div id="picsAndDetails">
 
         <img src="~/images/@(Model.ParkCode).jpg" style="width:auto; padding: 20px; " />
 
@@ -39,10 +39,10 @@
 
         @****************************************************************************************************@
 
-        <div style=" padding: 0px; margin: 0px;">
+        <div id="forecast" style=" padding: 0px; margin: 0px;">
             <p style=" margin-top: 20px; font-weight:bold; font-size:20px; color:forestgreen; text-align:center;">Five Day Forecast</p>
             <div style="display: flex; flex-direction: row; justify-content: space-between;">
-                <div style="width:250px; padding: 0px; margin: 0px;">
+                <div style="width:250px; padding: 0px; margin: 0px;" id="dayOne">
                     <p style=" margin-top: 20px; font-weight:bold; font-size:14px; color:forestgreen; text-align:center;">Today's Conditions</p>
 
                     <img src="~/images/@(Model.FiveDayForecast[0].Forecast).png" style="width:225px; padding: 0px; margin: 0px;" />
